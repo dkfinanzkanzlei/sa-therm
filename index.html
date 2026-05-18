@@ -599,32 +599,31 @@
     /* COOKIE BANNER */
     #cookieBanner {
       position: fixed;
-      bottom: 24px;
-      left: 50%;
-      transform: translateX(-50%);
+      bottom: 0;
+      left: 0;
+      right: 0;
       z-index: 999;
       background: #fff;
-      border-radius: 16px;
-      box-shadow: 0 8px 40px rgba(0,0,0,0.18);
-      padding: 24px 32px;
+      box-shadow: 0 -4px 24px rgba(0,0,0,0.12);
+      padding: 20px 5%;
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       align-items: center;
-      gap: 16px;
-      max-width: 620px;
-      width: calc(100% - 48px);
+      justify-content: center;
+      gap: 24px;
       text-align: center;
       animation: fadeUp .5s ease both;
     }
 
     .cookie-text {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
+      flex: 0 1 640px;
     }
 
-    .cookie-text span { font-size: 1.6rem; }
+    .cookie-text span { font-size: 1.3rem; flex-shrink: 0; }
 
     .cookie-text p {
       font-size: 0.88rem;
