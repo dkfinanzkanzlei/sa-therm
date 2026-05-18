@@ -23,7 +23,8 @@
       "PowerShell($git = \"C:\\\\Program Files\\\\Git\\\\bin\\\\git.exe\"; Set-Location \"C:\\\\Users\\\\ask11\\\\OneDrive\\\\Dokumente\\\\Hook Hero\\\\sa-therm.de\"; & $git add .; & $git commit -m \"Fix cookie banner centering, hero text layout\"; & $git push)",
       "PowerShell($git = \"C:\\\\Program Files\\\\Git\\\\bin\\\\git.exe\"; Set-Location \"C:\\\\Users\\\\ask11\\\\OneDrive\\\\Dokumente\\\\Hook Hero\\\\sa-therm.de\"; & $git status; & $git add .; & $git diff --cached --quiet; if \\(-not $?\\) { & $git commit -m \"Update website\"; & $git push } else { Write-Output \"Alles aktuell, nichts zu pushen.\" })",
       "PowerShell($git = \"C:\\\\Program Files\\\\Git\\\\bin\\\\git.exe\"; Set-Location \"C:\\\\Users\\\\ask11\\\\OneDrive\\\\Dokumente\\\\Hook Hero\\\\sa-therm.de\"; & $git add .; & $git commit -m \"Add floating particle animations to hero section\"; & $git push)",
-      "PowerShell($git = \"C:\\\\Program Files\\\\Git\\\\bin\\\\git.exe\"; Set-Location \"C:\\\\Users\\\\ask11\\\\OneDrive\\\\Dokumente\\\\Hook Hero\\\\sa-therm.de\"; & $git add .; & $git commit -m \"Remove floating particle animations\"; & $git push)"
+      "PowerShell($git = \"C:\\\\Program Files\\\\Git\\\\bin\\\\git.exe\"; Set-Location \"C:\\\\Users\\\\ask11\\\\OneDrive\\\\Dokumente\\\\Hook Hero\\\\sa-therm.de\"; & $git add .; & $git commit -m \"Remove floating particle animations\"; & $git push)",
+      "PowerShell($git = \"C:\\\\Program Files\\\\Git\\\\bin\\\\git.exe\"; Set-Location \"C:\\\\Users\\\\ask11\\\\OneDrive\\\\Dokumente\\\\Hook Hero\\\\sa-therm.de\"; & $git add .; & $git commit -m \"Add favicon to all pages\"; & $git push)"
     ]
   }
 }
