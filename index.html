@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SA-THERM - Sanitär &amp; Heizung Düsseldorf</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:   #1a45a0;
+      --blue2:  #123788;
+      --red:    #d41a1a;
+      --red2:   #b81414;
+      --light:  #f0f4fb;
+      --gray:   #64748b;
+      --white:  #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #1e293b;
+      background: var(--white);
+    }
+
+    /* NAVBAR */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+      height: 120px;
+      background: transparent;
+      backdrop-filter: none;
+      box-shadow: none;
+      transition: background .3s, box-shadow .3s;
+    }
+
+    .nav-logo img {
+      height: 150px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 10px rgba(255,255,255,0.9)) drop-shadow(0 0 20px rgba(255,255,255,0.6));
+    }
+
+    nav.scrolled .nav-logo img {
+      filter: none;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #fff;
+      transition: color .2s;
+    }
+
+    .nav-links a:hover { color: rgba(255,255,255,.7); }
+
+    nav.scrolled {
+      background: rgba(255,255,255,0.97) !important;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 1px 16px rgba(0,0,0,0.08);
+    }
+
+    nav.scrolled .nav-links a { color: var(--blue); }
+    nav.scrolled .nav-links a:hover { color: var(--red); }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #25d366;
+      color: #fff !important;
+      padding: 8px 18px;
+      border-radius: 50px;
+      font-weight: 700 !important;
+      font-size: 0.88rem !important;
+      transition: background .2s, transform .15s !important;
+    }
+
+    .nav-cta:hover { background: #1db954 !important; transform: scale(1.04); }
+
+    /* HERO */
+    .hero {
+      min-height: 75vh;
+      background: url('hero.jpg') center top/cover no-repeat;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(100deg, rgba(18,55,136,.85) 0%, rgba(18,55,136,.5) 60%, transparent 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding: 0 8%;
+      max-width: 900px;
+      width: 100%;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: var(--red);
+      color: #fff;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 4px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 4vw, 3.1rem);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span { color: #f87171; }
+
+    .hero p {
+      color: rgba(255,255,255,.85);
+      font-size: 1.1rem;
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+
+    .hero-btns {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--red);
+      color: #fff;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: background .2s, transform .15s;
+    }
+
+    .btn-primary:hover { background: var(--red2); transform: translateY(-2px); }
+
+    .btn-wa { background: #25d366 !important; animation: pulse 2.5s 1.2s infinite; }
+    .btn-wa:hover { background: #1db954 !important; }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,.15);
+      color: #fff;
+      border: 2px solid rgba(255,255,255,.5);
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      backdrop-filter: blur(4px);
+      transition: background .2s, transform .15s;
+    }
+
+    .btn-secondary:hover { background: rgba(255,255,255,.28); transform: translateY(-2px); }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 44px;
+    }
+
+    .hero-badges span {
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.3);
+      color: #fff;
+      padding: 7px 15px;
+      border-radius: 50px;
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
+
+    /* SECTIONS */
+    section { padding: 90px 8%; }
+
+    .section-label {
+      display: inline-block;
+      color: var(--red);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      font-size: clamp(1.6rem, 3vw, 2.3rem);
+      font-weight: 800;
+      color: var(--blue);
+      line-height: 1.25;
+    }
+
+    .section-intro {
+      color: var(--gray);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      max-width: 560px;
+      margin-top: 14px;
+    }
+
+    /* SERVICES */
+    #leistungen { background: var(--light); }
+
+    .services-header {
+      text-align: center;
+      margin-bottom: 54px;
+    }
+
+    .services-header .section-intro { margin: 14px auto 0; }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 28px;
+    }
+
+    .service-card {
+      background: var(--white);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.07);
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 40px rgba(26,69,160,0.15);
+    }
+
+    .service-card { position: relative; }
+
+    .service-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      object-position: center 20%;
+    }
+
+    .card-icon {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(255,255,255,0.92);
+      border-radius: 10px;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      z-index: 2;
+    }
+
+    .service-card-body {
+      padding: 22px 24px 26px;
+    }
+
+    .service-card-body h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--blue);
+      margin-bottom: 8px;
+    }
+
+    .service-card-body p {
+      color: var(--gray);
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .about-text .section-intro { max-width: 100%; }
+    .about-text .btn-primary { display: inline-flex; margin-top: 30px; cursor: pointer; border: none; }
+
+    .btn-flip { transition: background .3s, transform .15s, min-width .4s; min-width: 210px; justify-content: center; }
+    .btn-flip.flipped { background: var(--blue) !important; letter-spacing: .02em; }
+
+    @keyframes flipText {
+      0%   { opacity: 1; transform: translateY(0); }
+      40%  { opacity: 0; transform: translateY(-12px); }
+      60%  { opacity: 0; transform: translateY(12px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .btn-flip.animating #btnText { animation: flipText .45s ease forwards; }
+
+    .about-checks {
+      list-style: none;
+      margin-top: 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .about-checks li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      color: var(--blue);
+      font-size: 0.97rem;
+    }
+
+    .about-checks li::before {
+      content: '\2713';
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      background: var(--red);
+      color: #fff;
+      border-radius: 50%;
+      font-size: 0.75rem;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .about-img img {
+      width: 75%;
+      display: block;
+      margin: 0 auto;
+      border-radius: 16px;
+      object-fit: cover;
+      height: 400px;
+      object-position: 70% 15%;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.14);
+    }
+
+    /* CONTACT */
+    #kontakt { background: var(--blue); }
+    #kontakt h2 { color: #fff; }
+    #kontakt .section-label { color: #f87171; }
+    #kontakt .section-intro { color: rgba(255,255,255,.75); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      margin-top: 50px;
+      align-items: start;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .contact-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(255,255,255,.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    .contact-item-text strong {
+      display: block;
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 4px;
+      opacity: .6;
+    }
+
+    .contact-item-text a,
+    .contact-item-text span {
+      color: #fff;
+      font-size: 1.05rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .contact-item-text a:hover { color: #f87171; }
+
+    .contact-ctas {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .btn-whatsapp {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: #25d366;
+      color: #fff;
+      padding: 16px 28px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: background .2s, transform .15s;
+    }
+
+    .btn-whatsapp:hover { background: #1db954; transform: translateY(-2px); }
+
+    .btn-call {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: var(--red);
+      color: #fff;
+      padding: 16px 28px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: background .2s, transform .15s;
+    }
+
+    .btn-call:hover { background: var(--red2); transform: translateY(-2px); }
+
+    /* FOOTER */
+    footer {
+      background: var(--blue2);
+      color: rgba(255,255,255,.55);
+      padding: 36px 8%;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      font-size: 0.88rem;
+    }
+
+    footer a {
+      color: rgba(255,255,255,.55);
+      text-decoration: none;
+      transition: color .2s;
+    }
+
+    footer a:hover { color: #fff; }
+
+    .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+
+    /* HERO TEXT STYLE */
+    .hero h1 {
+      font-size: max(min(2.6vw, 48px), 1.1rem);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 24px;
+      max-width: 800px;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,.85);
+      line-height: 1.75;
+      margin-bottom: 36px;
+      max-width: 540px;
+    }
+
+    /* ANIMATIONS – hero entrance */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(32px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    @keyframes slideInLeft {
+      from { opacity: 0; transform: translateX(-48px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes slideInRight {
+      from { opacity: 0; transform: translateX(48px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes scaleIn {
+      from { opacity: 0; transform: scale(0.88); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(212,26,26,.45); }
+      50%       { box-shadow: 0 0 0 12px rgba(212,26,26,0); }
+    }
+
+    .anim-hero-title {
+      animation: slideInLeft .8s cubic-bezier(.22,.68,0,1.2) both;
+    }
+
+    .anim-hero-sub {
+      animation: fadeUp .7s .3s cubic-bezier(.22,.68,0,1.2) both;
+    }
+
+    .anim-hero-btns {
+      animation: fadeUp .7s .55s cubic-bezier(.22,.68,0,1.2) both;
+    }
+
+    .btn-primary {
+      animation: pulse 2.5s 1.2s infinite;
+    }
+
+    /* SCROLL ANIMATIONS */
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity .65s cubic-bezier(.22,.68,0,1.2), transform .65s cubic-bezier(.22,.68,0,1.2);
+    }
+
+    .reveal.from-left {
+      transform: translateX(-48px);
+    }
+
+    .reveal.from-right {
+      transform: translateX(48px);
+    }
+
+    .reveal.scale {
+      transform: scale(0.9);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translate(0) scale(1);
+    }
+
+    .service-card:nth-child(2) img { object-position: center 10%; }
+    .service-card:nth-child(3) img { object-position: center 80%; }
+
+    /* stagger cards */
+    .service-card:nth-child(1) { transition-delay: .05s; }
+    .service-card:nth-child(2) { transition-delay: .12s; }
+    .service-card:nth-child(3) { transition-delay: .19s; }
+    .service-card:nth-child(4) { transition-delay: .26s; }
+    .service-card:nth-child(5) { transition-delay: .33s; }
+    .service-card:nth-child(6) { transition-delay: .40s; }
+
+    /* nav logo subtle entrance */
+    .nav-logo { animation: fadeIn .6s ease both; }
+    .nav-links { animation: fadeIn .6s .2s ease both; }
+
+    /* COOKIE BANNER */
+    #cookieBanner {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 999;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+      padding: 20px 28px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      max-width: 780px;
+      width: calc(100% - 48px);
+      animation: fadeUp .5s ease both;
+    }
+
+    .cookie-text {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      flex: 1;
+    }
+
+    .cookie-text span { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
+
+    .cookie-text p {
+      font-size: 0.88rem;
+      color: #475569;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    .cookie-text a { color: var(--blue); text-decoration: underline; }
+
+    .cookie-btns {
+      display: flex;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .cookie-accept {
+      background: var(--blue);
+      color: #fff;
+      border: none;
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background .2s;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .cookie-accept:hover { background: var(--blue2); }
+
+    .cookie-decline {
+      background: transparent;
+      color: var(--gray);
+      border: 1.5px solid #cbd5e1;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: border-color .2s, color .2s;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .cookie-decline:hover { border-color: var(--blue); color: var(--blue); }
+
+    /* RESPONSIVE */
+    @media (max-width: 860px) {
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 36px; }
+      .about-img { order: -1; }
+      .nav-links { display: none; }
+    }
+
+    @media (max-width: 520px) {
+      section { padding: 60px 6%; }
+      .hero-content { padding: 0 6%; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <a href="#" class="nav-logo">
+    <img src="https://onecdn.io/media/83325039-1111-47fe-85f4-a2f19fa7c810/md2x" alt="SA-THERM Logo" />
+  </a>
+  <ul class="nav-links">
+    <li><a href="#leistungen">Leistungen</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
+    <li>
+      <a href="https://wa.me/4917631019528" target="_blank" class="nav-cta">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <h1 class="anim-hero-title">Sanitär &amp; Heizung vom<br/>Fachbetrieb – zuverlässig,<br/>schnell &amp; fair</h1>
+    <p class="anim-hero-sub">Ihr Fachbetrieb für Heizung, Sanitär, Wartung und Reparatur.<br/>Für Privatkunden &amp; Gewerbe in Ihrer Region.</p>
+    <div class="hero-btns anim-hero-btns">
+      <a href="https://wa.me/4917631019528" target="_blank" class="btn-primary btn-wa">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Termin via WhatsApp
+      </a>
+      <a href="tel:+4917631019528" class="btn-secondary btn-phone">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        +49 176 31019528
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- LEISTUNGEN -->
+<section id="leistungen">
+  <div class="services-header reveal">
+    <span class="section-label">Was wir anbieten</span>
+    <h2>Unsere Leistungen</h2>
+    <p class="section-intro">Von der Heizungsmodernisierung bis zum Notdienst – wir sind Ihr verlässlicher Partner rund um Sanitär und Heizung.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal scale">
+      <div class="card-icon">🔥</div>
+      <img src="https://onecdn.io/media/206f3e1a-3610-40b8-8502-48c8437bc42d/md2x" alt="Heizungsbau" loading="lazy" />
+      <div class="service-card-body">
+        <h3>Heizungsbau &amp; -modernisierung</h3>
+        <p>Neuinstallation, Austausch und Modernisierung moderner Heizsysteme.</p>
+      </div>
+    </div>
+    <div class="service-card reveal scale">
+      <div class="card-icon">🌡️</div>
+      <img src="https://onecdn.io/media/72db10b3-a6c0-42a1-8644-aa63ceaf91eb/md2x" alt="Fußbodenheizung" loading="lazy" />
+      <div class="service-card-body">
+        <h3>Fußbodenheizungen</h3>
+        <p>Einbau und Nachrüstung für effiziente und gleichmäßige Wärme.</p>
+      </div>
+    </div>
+    <div class="service-card reveal scale">
+      <div class="card-icon">🚿</div>
+      <img src="https://onecdn.io/media/0109f45a-96e4-4426-afac-b226c1560101/md2x" alt="Badmodernisierung" loading="lazy" />
+      <div class="service-card-body">
+        <h3>Badmodernisierung &amp; Sanitärtechnik</h3>
+        <p>Komplettbäder, Armaturen, Keramik und moderne Sanitärlösungen.</p>
+      </div>
+    </div>
+    <div class="service-card reveal scale">
+      <div class="card-icon">💧</div>
+      <img src="https://onecdn.io/media/65ba57ed-4d0a-410c-8154-5df1c9d9406f/md2x" alt="Rohrleitungsinstallation" loading="lazy" />
+      <div class="service-card-body">
+        <h3>Trinkwasser- &amp; Rohrleitungsinstallation</h3>
+        <p>Fachgerechte Installation und Erneuerung von Wasser- und Rohrsystemen.</p>
+      </div>
+    </div>
+    <div class="service-card reveal scale">
+      <div class="card-icon">🌿</div>
+      <img src="https://onecdn.io/media/9759c833-3bd8-4f8e-8157-7a4381528c3b/md2x" alt="Wärmepumpen" loading="lazy" />
+      <div class="service-card-body">
+        <h3>Wärmepumpen &amp; energieeffiziente Systeme</h3>
+        <p>Planung, Installation und Beratung zu nachhaltigen Heizlösungen.</p>
+      </div>
+    </div>
+    <div class="service-card reveal scale">
+      <div class="card-icon">🔧</div>
+      <img src="https://onecdn.io/media/88db398c-d5a0-4ffe-8bed-142033cad617/md2x" alt="Notdienst" loading="lazy" />
+      <div class="service-card-body">
+        <h3>Service, Wartung &amp; Notdienst</h3>
+        <p>Reparaturen, regelmäßige Wartung, Wartungsverträge und schnelle Hilfe im Notfall.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="ueber-uns">
+  <div class="about-grid">
+    <div class="about-text reveal from-left">
+      <span class="section-label">Über uns</span>
+      <h2>Ihr Fachbetrieb für Sanitär &amp; Heizung in Düsseldorf</h2>
+      <p class="section-intro">Ob neue Heizung, Wärmepumpe oder Badmodernisierung: Wir begleiten Sie von der Beratung bis zur fertigen Umsetzung – inklusive Wartung und Service.</p>
+      <ul class="about-checks">
+        <li>Persönliche Beratung vor Ort</li>
+        <li>Faire und transparente Preise</li>
+        <li>Schnelle und zuverlässige Umsetzung</li>
+        <li>Notdienst &amp; Wartungsverträge</li>
+      </ul>
+      <button class="btn-primary btn-flip" id="btnKontakt" onclick="flipBtn()">
+        <span id="btnText">Kontakt aufnehmen</span>
+      </button>
+    </div>
+    <div class="about-img reveal from-right">
+      <img src="https://onecdn.io/media/a9381533-a499-44a2-9066-ec5e93c539df/md2x" alt="SA-THERM Team" />
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<section id="kontakt">
+  <span class="section-label reveal">Kontakt</span>
+  <h2 class="reveal">Sprechen Sie uns an</h2>
+  <p class="section-intro reveal">Wir sind für Sie da – ob per Telefon, E-Mail oder WhatsApp. Jetzt Termin vereinbaren!</p>
+
+  <div class="contact-grid">
+    <div style="display:flex; flex-direction:column; gap:28px;">
+      <div class="contact-item">
+        <div class="contact-icon">&#128205;</div>
+        <div class="contact-item-text">
+          <strong>Adresse</strong>
+          <span>Ludenbergerstraße 7, 40629 Düsseldorf</span>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">&#128222;</div>
+        <div class="contact-item-text">
+          <strong>Telefon</strong>
+          <a href="tel:+4917631019528">+49 176 31019528</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">&#9993;</div>
+        <div class="contact-item-text">
+          <strong>E-Mail</strong>
+          <a href="mailto:info@sa-therm.de">info@sa-therm.de</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-ctas">
+      <a href="https://wa.me/4917631019528" target="_blank" class="btn-whatsapp">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Jetzt auf WhatsApp schreiben
+      </a>
+      <a href="tel:+4917631019528" class="btn-call">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#1a45a0"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        Jetzt anrufen
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- COOKIE BANNER -->
+<div id="cookieBanner">
+  <div class="cookie-text">
+    <span>&#127850;</span>
+    <p>Diese Website verwendet Cookies, um die Nutzererfahrung zu verbessern und Inhalte zu optimieren.
+    Weitere Informationen finden Sie in unserer <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
+  </div>
+  <div class="cookie-btns">
+    <button class="cookie-decline" onclick="declineCookies()">Ablehnen</button>
+    <button class="cookie-accept" onclick="acceptCookies()">Akzeptieren</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span>&#169; 2025 SA-THERM GbR &middot; Ludenbergerstraße 7, 40629 Düsseldorf</span>
+  <div class="footer-links">
+    <a href="impressum.html">Impressum</a>
+    <a href="datenschutz.html">Datenschutz</a>
+    <a href="https://instagram.com/sa.therm" target="_blank">Instagram</a>
+  </div>
+</footer>
+
+<script>
+  // Cookie Banner
+  const banner = document.getElementById('cookieBanner');
+  if (localStorage.getItem('cookieConsent')) banner.style.display = 'none';
+
+  function acceptCookies() {
+    localStorage.setItem('cookieConsent', 'accepted');
+    banner.style.animation = 'none';
+    banner.style.opacity = '0';
+    banner.style.transform = 'translateX(-50%) translateY(20px)';
+    banner.style.transition = 'opacity .3s, transform .3s';
+    setTimeout(() => banner.style.display = 'none', 300);
+  }
+
+  function declineCookies() {
+    localStorage.setItem('cookieConsent', 'declined');
+    banner.style.animation = 'none';
+    banner.style.opacity = '0';
+    banner.style.transform = 'translateX(-50%) translateY(20px)';
+    banner.style.transition = 'opacity .3s, transform .3s';
+    setTimeout(() => banner.style.display = 'none', 300);
+  }
+
+  function flipBtn() {
+    const btn = document.getElementById('btnKontakt');
+    const txt = document.getElementById('btnText');
+    const isFlipped = btn.classList.contains('flipped');
+
+    btn.classList.add('animating');
+    setTimeout(() => {
+      if (isFlipped) {
+        txt.textContent = 'Kontakt aufnehmen';
+        btn.classList.remove('flipped');
+        btn.onclick = flipBtn;
+      } else {
+        txt.textContent = '+49 176 31019528';
+        btn.classList.add('flipped');
+        btn.onclick = () => window.location.href = 'tel:+4917631019528';
+      }
+    }, 220);
+    setTimeout(() => btn.classList.remove('animating'), 460);
+  }
+
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

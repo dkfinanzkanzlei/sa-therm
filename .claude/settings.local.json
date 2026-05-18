@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:sa-therm.de)",
+      "PowerShell(python --version; node --version)",
+      "PowerShell(Start-Process python -ArgumentList \"-m\", \"http.server\", \"3000\" -WorkingDirectory \"C:\\\\Users\\\\ask11\\\\OneDrive\\\\Dokumente\\\\Hook Hero\\\\sa-therm.de\" -WindowStyle Hidden)",
+      "PowerShell(Get-Process *)",
+      "PowerShell(Set-Location \"C:\\\\Users\\\\ask11\\\\OneDrive\\\\Dokumente\\\\Hook Hero\\\\sa-therm.de\"; Start-Process powershell -ArgumentList '-NoExit', '-Command', 'python -m http.server 3000')",
+      "PowerShell(Start-Sleep -Seconds 2; try { $r = Invoke-WebRequest -Uri \"http://localhost:3000\" -UseBasicParsing -TimeoutSec 3; \"OK: $\\($r.StatusCode\\)\" } catch { \"FEHLER: $_\" })",
+      "PowerShell($job = Start-Job -ScriptBlock { Set-Location \"C:\\\\Users\\\\ask11\\\\OneDrive\\\\Dokumente\\\\Hook Hero\\\\sa-therm.de\"; python -m http.server 8080 }; Start-Sleep -Seconds 3; try { $r = Invoke-WebRequest -Uri \"http://localhost:8080\" -UseBasicParsing -TimeoutSec 4; \"Server OK: $\\($r.StatusCode\\)\" } catch { \"Fehler: $_\" })",
+      "PowerShell(Start-Process \"http://localhost:8080\")",
+      "PowerShell(Start-Process powershell.exe -ArgumentList '-NoExit', '-Command', 'Set-Location \"C:\\\\Users\\\\ask11\\\\OneDrive\\\\Dokumente\\\\Hook Hero\\\\sa-therm.de\"; python -m http.server 8080; Read-Host')",
+      "PowerShell(Set-Content *)",
+      "WebFetch(domain:onecdn.io)",
+      "PowerShell(Invoke-WebRequest -Uri \"https://onecdn.io/media/a9381533-a499-44a2-9066-ec5e93c539df/lg2x\" -OutFile \"C:\\\\Users\\\\ask11\\\\OneDrive\\\\Dokumente\\\\Hook Hero\\\\sa-therm.de\\\\hero.jpg\"; $f = Get-Item \"C:\\\\Users\\\\ask11\\\\OneDrive\\\\Dokumente\\\\Hook Hero\\\\sa-therm.de\\\\hero.jpg\"; \"Gespeichert: $\\([math]::Round\\($f.Length/1KB\\)\\) KB\")",
+      "PowerShell(Test-Path *)",
+      "PowerShell(Get-Command *)",
+      "PowerShell(Get-ChildItem *)",
+      "PowerShell($git = \"C:\\\\Program Files\\\\Git\\\\bin\\\\git.exe\"; Set-Location \"C:\\\\Users\\\\ask11\\\\OneDrive\\\\Dokumente\\\\Hook Hero\\\\sa-therm.de\"; & $git init; & $git add .; & $git commit -m \"Initial commit: SA-THERM website\")"
+    ]
+  }
+}
