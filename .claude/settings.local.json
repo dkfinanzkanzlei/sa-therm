@@ -16,7 +16,11 @@
       "PowerShell(Test-Path *)",
       "PowerShell(Get-Command *)",
       "PowerShell(Get-ChildItem *)",
-      "PowerShell($git = \"C:\\\\Program Files\\\\Git\\\\bin\\\\git.exe\"; Set-Location \"C:\\\\Users\\\\ask11\\\\OneDrive\\\\Dokumente\\\\Hook Hero\\\\sa-therm.de\"; & $git init; & $git add .; & $git commit -m \"Initial commit: SA-THERM website\")"
+      "PowerShell($git = \"C:\\\\Program Files\\\\Git\\\\bin\\\\git.exe\"; Set-Location \"C:\\\\Users\\\\ask11\\\\OneDrive\\\\Dokumente\\\\Hook Hero\\\\sa-therm.de\"; & $git init; & $git add .; & $git commit -m \"Initial commit: SA-THERM website\")",
+      "PowerShell($git = \"C:\\\\Program Files\\\\Git\\\\bin\\\\git.exe\"; & $git config --global user.email \"roadtothedream29@gmail.com\"; & $git config --global user.name \"SA-THERM\"; Set-Location \"C:\\\\Users\\\\ask11\\\\OneDrive\\\\Dokumente\\\\Hook Hero\\\\sa-therm.de\"; & $git commit -m \"Initial commit: SA-THERM website\")",
+      "PowerShell($git = \"C:\\\\Program Files\\\\Git\\\\bin\\\\git.exe\"; Set-Location \"C:\\\\Users\\\\ask11\\\\OneDrive\\\\Dokumente\\\\Hook Hero\\\\sa-therm.de\"; & $git remote add origin https://github.com/dkfinanzkanzlei/sa-therm.git; & $git branch -M main; & $git push -u origin main)",
+      "PowerShell($git = \"C:\\\\Program Files\\\\Git\\\\bin\\\\git.exe\"; Set-Location \"C:\\\\Users\\\\ask11\\\\OneDrive\\\\Dokumente\\\\Hook Hero\\\\sa-therm.de\"; & $git push -u origin main --force)",
+      "PowerShell($git = \"C:\\\\Program Files\\\\Git\\\\bin\\\\git.exe\"; Set-Location \"C:\\\\Users\\\\ask11\\\\OneDrive\\\\Dokumente\\\\Hook Hero\\\\sa-therm.de\"; & $git add .; & $git commit -m \"Fix cookie banner centering, hero text layout\"; & $git push)"
     ]
   }
 }
